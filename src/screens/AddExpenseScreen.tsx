@@ -11,12 +11,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { colors, spacing, typography, borderRadius } from '../../theme';
-import { Button, Input, Avatar } from '../../components/ui';
-import { expensesService, membersService } from '../../lib/services';
-import { Member, RootStackParamList } from '../../types';
-import { parseToCents, formatMoney } from '../../utils/balance';
-import { useAuthStore } from '../../store/authStore';
+import { colors, spacing, typography, borderRadius } from '../theme';
+import { Button, Input, Avatar } from '../components/ui';
+import { expensesService, membersService } from '../lib/services';
+import { Member, RootStackParamList } from '../types';
+import { parseToCents, formatMoney } from '../utils/balance';
+import { useAuthStore } from '../store/authStore';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 type AddExpenseRouteProp = RouteProp<RootStackParamList, 'AddExpense'>;

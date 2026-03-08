@@ -10,9 +10,10 @@ import {
   Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { colors, spacing, typography, borderRadius } from '../../theme';
-import { Button, Input } from '../../components/ui';
-import { auth } from '../../lib/supabase';
+import { Ionicons } from '@expo/vector-icons';
+import { colors, spacing, typography, borderRadius } from '../theme';
+import { Button, Input } from '../components/ui';
+import { auth } from '../lib/supabase';
 
 export function AuthScreen() {
   const [isLogin, setIsLogin] = useState(true);
@@ -60,7 +61,7 @@ export function AuthScreen() {
           {/* Header */}
           <View style={styles.header}>
             <View style={styles.logoContainer}>
-              <Text style={styles.logoIcon}>💰</Text>
+              <Ionicons name="cash-outline" size={48} color={colors.surface} />
             </View>
             <Text style={styles.title}>Tricount</Text>
             <Text style={styles.subtitle}>
@@ -148,9 +149,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: spacing.md,
-  },
-  logoIcon: {
-    fontSize: 40,
   },
   title: {
     ...typography.h1,

@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { colors, spacing, typography, borderRadius } from '../../theme';
-import { Avatar, Card } from '../../components/ui';
-import { useAuthStore } from '../../store/authStore';
+import { colors, spacing, typography, borderRadius } from '../theme';
+import { Avatar, Card } from '../components/ui';
+import { useAuthStore } from '../store/authStore';
 
 export function ProfileScreen() {
   const { user, signOut } = useAuthStore();

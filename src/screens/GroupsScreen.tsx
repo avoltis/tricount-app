@@ -12,12 +12,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { colors, spacing, typography, borderRadius, shadows } from '../../theme';
-import { Card, EmptyState } from '../../components/ui';
-import { groupsService } from '../../lib/services';
-import { Group, RootStackParamList } from '../../types';
-import { formatMoney } from '../../utils/balance';
-import { useAuthStore } from '../../store/authStore';
+import { colors, spacing, typography, borderRadius, shadows } from '../theme';
+import { Card, EmptyState } from '../components/ui';
+import { groupsService } from '../lib/services';
+import { Group, RootStackParamList } from '../types';
+import { formatMoney } from '../utils/balance';
+import { useAuthStore } from '../store/authStore';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 

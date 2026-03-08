@@ -13,12 +13,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { colors, spacing, typography, borderRadius, shadows } from '../../theme';
-import { Avatar, EmptyState, Card } from '../../components/ui';
-import { expensesService, membersService, settlementsService } from '../../lib/services';
-import { Expense, Member, Settlement, RootStackParamList, ExpenseSplit } from '../../types';
-import { formatMoney, calculateBalances, calculateSettlements, getBalanceColor } from '../../utils/balance';
-import { useAuthStore } from '../../store/authStore';
+import { colors, spacing, typography, borderRadius, shadows } from '../theme';
+import { Avatar, EmptyState, Card } from '../components/ui';
+import { expensesService, membersService, settlementsService } from '../lib/services';
+import { Expense, Member, Settlement, RootStackParamList, ExpenseSplit } from '../types';
+import { formatMoney, calculateBalances, calculateSettlements, getBalanceColor } from '../utils/balance';
+import { useAuthStore } from '../store/authStore';
 import { format } from 'date-fns';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
