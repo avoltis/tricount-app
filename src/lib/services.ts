@@ -8,7 +8,7 @@ import { Group, Member, Expense, ExpenseSplit, Settlement } from '../types';
 export const groupsService = {
   // Get all groups for current user
   getMyGroups: async (userId: string): Promise<Group[]> => {
-    // Get groups where user is a member
+    // Get groups where user is the creator OR a member
     const { data: memberGroups, error: memberError } = await supabase
       .from('members')
       .select('group_id')
@@ -16,15 +16,21 @@ export const groupsService = {
 
     if (memberError) throw memberError;
 
-    const groupIds = memberGroups?.map((m) => m.group_id) || [];
+    const memberGroupIds = memberGroups?.map((m) => m.group_id) || [];
 
-    if (groupIds.length === 0) return [];
-
-    const { data, error } = await supabase
+    // Get all groups: either created by user or user is a member
+    let query = supabase
       .from('groups')
-      .select('*')
-      .in('id', groupIds)
-      .order('updated_at', { ascending: false });
+      .select('*');
+
+    if (memberGroupIds.length > 0) {
+      query = query.or(`created_by.eq.${userId},id.in.(${memberGroupIds.join(',')})`);
+    } else {
+      // If no member groups, just get groups created by user
+      query = query.eq('created_by', userId);
+    }
+
+    const { data, error } = await query.order('updated_at', { ascending: false });
 
     if (error) throw error;
     return data || [];

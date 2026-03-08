@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { colors, spacing, typography, borderRadius, shadows } from '../theme';
 import { Card, EmptyState } from '../components/ui';
@@ -41,9 +41,12 @@ export function GroupsScreen() {
     }
   }, [user]);
 
-  useEffect(() => {
-    loadGroups();
-  }, [loadGroups]);
+  // Refresh groups when screen comes into focus
+  useFocusEffect(
+    useCallback(() => {
+      loadGroups();
+    }, [loadGroups])
+  );
 
   const handleRefresh = () => {
     setRefreshing(true);
